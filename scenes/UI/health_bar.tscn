@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://blcvj2e61ldh5"]
+
+[ext_resource type="Texture2D" uid="uid://mj45pk31djqx" path="res://Assets/UI/health_bars/under.png" id="1_hk2av"]
+[ext_resource type="Texture2D" uid="uid://cq8jmv4cdeub5" path="res://Assets/UI/health_bars/over.png" id="2_2vfkw"]
+[ext_resource type="Texture2D" uid="uid://bucfso2mv877l" path="res://Assets/UI/health_bars/progress.png" id="3_b40fk"]
+[ext_resource type="Script" path="res://scripts/UI/player_health_bar.gd" id="4_2paq5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="progress_bar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = -11.0
+offset_top = -50.0
+offset_right = 134.0
+offset_bottom = 95.0
+scale = Vector2(2.89815, 2.10641)
+value = 50.0
+texture_under = ExtResource("1_hk2av")
+texture_over = ExtResource("2_2vfkw")
+texture_progress = ExtResource("3_b40fk")
+script = ExtResource("4_2paq5")

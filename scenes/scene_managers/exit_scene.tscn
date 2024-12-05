@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dumq4cg2cedve"]
+
+[ext_resource type="Script" path="res://scripts/scene_changes/exit_to_level.gd" id="1_buaa6"]
+[ext_resource type="PackedScene" uid="uid://b6lfe25wtbwih" path="res://scenes/levels/level_2.tscn" id="2_77r3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anvf8"]
+size = Vector2(20, 203)
+
+[node name="exit_signal" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_buaa6")
+scene_to_transition = ExtResource("2_77r3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_anvf8")

@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://cn4wwgnv50s67"]
+
+[ext_resource type="Script" path="res://scripts/traps/saw_trap_1.gd" id="1_lege7"]
+[ext_resource type="SpriteFrames" uid="uid://2dyfg2tvv6s0" path="res://animations/traps/saw.tres" id="2_bq1eg"]
+
+[sub_resource type="Animation" id="Animation_pdbds"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"level_3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dmg_area/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-32, -30)]
+}
+
+[sub_resource type="Animation" id="Animation_lkhvl"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"level_3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 17]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dmg_area/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.366667, 0.466667, 0.533333, 0.766667, 0.8, 0.866667, 0.966667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-32, -30), Vector2(-12, -5), Vector2(11, -3), Vector2(28, -21), Vector2(30, -29), Vector2(11, -4), Vector2(1, 0), Vector2(-11, -2), Vector2(-20, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghlg4"]
+_data = {
+"RESET": SubResource("Animation_pdbds"),
+"default": SubResource("Animation_lkhvl")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d0gr2"]
+radius = 14.0
+
+[node name="saw_trap_3" type="Node2D" node_paths=PackedStringArray("dmg_area")]
+script = ExtResource("1_lege7")
+dmg_area = NodePath("dmg_area")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_bq1eg")
+animation = &"level_3"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ghlg4")
+}
+autoplay = "default"
+
+[node name="dmg_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dmg_area"]
+position = Vector2(-32, -30)
+shape = SubResource("CircleShape2D_d0gr2")

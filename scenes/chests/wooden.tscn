@@ -1,0 +1,129 @@
+[gd_scene load_steps=16 format=3 uid="uid://ciseevk44sg0y"]
+
+[ext_resource type="Script" path="res://scripts/interactibles/chest_script.gd" id="1_htjay"]
+[ext_resource type="Texture2D" uid="uid://dghhkbiah28qd" path="res://Assets/chest/Chests.png" id="2_kghfd"]
+[ext_resource type="PackedScene" uid="uid://yw72slo73ot2" path="res://scenes/chest_items/chest_gold_gem.tscn" id="2_xf5rh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqcjt"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d2sx"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61ngn"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1l2i"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cm7n"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w3t2"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjg5i"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(48, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nfgn"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(96, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43m6l"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(144, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqwfs"]
+atlas = ExtResource("2_kghfd")
+region = Rect2(192, 32, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fwm12"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqcjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d2sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61ngn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1l2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cm7n")
+}],
+"loop": true,
+"name": &"wood_close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w3t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjg5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nfgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43m6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqwfs")
+}],
+"loop": false,
+"name": &"wood_open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7suqx"]
+size = Vector2(92, 81.5)
+
+[node name="wooden_chest" type="Node2D" node_paths=PackedStringArray("animation", "overhead_text", "trigger_area")]
+script = ExtResource("1_htjay")
+animation = NodePath("AnimatedSprite2D")
+overhead_text = NodePath("Label")
+trigger_area = NodePath("trigger")
+chest_items = Array[PackedScene]([ExtResource("2_xf5rh"), ExtResource("2_xf5rh")])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, -33)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fwm12")
+animation = &"wood_close"
+autoplay = "wood_close"
+frame_progress = 0.827871
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -100.0
+offset_right = 27.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "press E "
+metadata/_edit_use_anchors_ = true
+
+[node name="trigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger"]
+position = Vector2(-8, -39.25)
+shape = SubResource("RectangleShape2D_7suqx")

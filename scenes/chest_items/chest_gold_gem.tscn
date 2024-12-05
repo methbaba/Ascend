@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://yw72slo73ot2"]
+
+[ext_resource type="Texture2D" uid="uid://bl6rfiv27j0q3" path="res://Assets/consumables/gems/gem_1.png" id="1_b67il"]
+[ext_resource type="Script" path="res://scripts/interactibles/chest_gold_gem.gd" id="1_csb6v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_88pih"]
+friction = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsdxn"]
+atlas = ExtResource("1_b67il")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3davp"]
+atlas = ExtResource("1_b67il")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ylpo"]
+atlas = ExtResource("1_b67il")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbv63"]
+atlas = ExtResource("1_b67il")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cw8q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsdxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3davp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ylpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbv63")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hhxha"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xcpdt"]
+radius = 45.2769
+
+[node name="gold_gem_rb" type="RigidBody2D" node_paths=PackedStringArray("detection_timer", "player_detecction")]
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_88pih")
+sleeping = true
+lock_rotation = true
+script = ExtResource("1_csb6v")
+force_x = 150
+detection_timer = NodePath("detection_timer")
+player_detecction = NodePath("player_detecction")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7cw8q")
+autoplay = "default"
+frame_progress = 0.978336
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hhxha")
+
+[node name="player_detecction" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detecction"]
+shape = SubResource("CircleShape2D_xcpdt")
+
+[node name="detection_timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="player_detecction" to="." method="_on_player_detecction_body_entered"]
+[connection signal="timeout" from="detection_timer" to="." method="_on_detection_timer_timeout"]

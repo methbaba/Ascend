@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://bnn3lon1i23jo"]
+
+[ext_resource type="Texture2D" uid="uid://dghhkbiah28qd" path="res://Assets/chest/Chests.png" id="1_y6awx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3y2vp"]
+size = Vector2(88, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpx4x"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(0, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u5lx"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(48, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yma2j"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(96, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nu5vd"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(144, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlfd7"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(192, 192, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbj38"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(0, 224, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0k1ur"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(48, 224, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn47t"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(96, 224, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf46w"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(144, 224, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_as6tq"]
+atlas = ExtResource("1_y6awx")
+region = Rect2(192, 224, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3s5ih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpx4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u5lx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yma2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nu5vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlfd7")
+}],
+"loop": true,
+"name": &"ice_closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbj38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0k1ur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sn47t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf46w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as6tq")
+}],
+"loop": true,
+"name": &"ice_open",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, -5)
+shape = SubResource("RectangleShape2D_3y2vp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3s5ih")
+animation = &"ice_open"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg5p180el0qsu"]
+
+[ext_resource type="Script" path="res://scripts/camera/camera_manager.gd" id="1_s330f"]
+
+[node name="camera_manager" type="Node"]
+script = ExtResource("1_s330f")

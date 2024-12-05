@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://b5so2vvt6mv2f"]
+
+[ext_resource type="Texture2D" uid="uid://b1nparv6ifjdy" path="res://Assets/decor/Torches/RedTorch.png" id="1_11vgf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh6e8"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx71m"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_us87h"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhenf"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmjfx"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl0kp"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u83e"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1scr"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3l5s"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok4l0"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0w2t"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eayw"]
+atlas = ExtResource("1_11vgf")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2b15"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh6e8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx71m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_us87h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhenf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmjfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl0kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u83e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1scr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3l5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok4l0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0w2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eayw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="red_torch" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_c2b15")
+autoplay = "default"

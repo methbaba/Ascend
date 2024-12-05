@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjyp2cew15i6t"]
+
+[ext_resource type="Texture2D" uid="uid://b0xjd2h8fnck" path="res://Assets/weapons/TheUltimateWeaponsPack_Sheet.png" id="1_whetw"]
+[ext_resource type="Script" path="res://scripts/weapons/gun.gd" id="2_ly0i5"]
+[ext_resource type="PackedScene" uid="uid://bgvc3jnmheam1" path="res://scenes/weapons/bombs/heavy_rocket.tscn" id="3_ue4on"]
+
+[node name="heavy_nuke" type="Sprite2D"]
+rotation = -0.785398
+scale = Vector2(3, 3)
+texture = ExtResource("1_whetw")
+region_enabled = true
+region_rect = Rect2(334, 96, 41, 27)
+
+[node name="gun" type="Node2D" parent="."]
+script = ExtResource("2_ly0i5")
+bullet = ExtResource("3_ue4on")
+arc = 19.9
+fire_rate = 12.618
+bullet_count = 1

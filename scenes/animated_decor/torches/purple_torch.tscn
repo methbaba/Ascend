@@ -1,0 +1,120 @@
+[gd_scene load_steps=18 format=3 uid="uid://b2jghsnhqx2l5"]
+
+[ext_resource type="Texture2D" uid="uid://dawgwfelpohb3" path="res://Assets/decor/Torches/PurpleTorch.png" id="1_6g737"]
+[ext_resource type="Script" path="res://scripts/lights/light_flicker.gd" id="2_s06hx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5jy4"]
+atlas = ExtResource("1_6g737")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhhgw"]
+atlas = ExtResource("1_6g737")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0ueu"]
+atlas = ExtResource("1_6g737")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy1fb"]
+atlas = ExtResource("1_6g737")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4xg6"]
+atlas = ExtResource("1_6g737")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q53md"]
+atlas = ExtResource("1_6g737")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tu761"]
+atlas = ExtResource("1_6g737")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyi8y"]
+atlas = ExtResource("1_6g737")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q40k"]
+atlas = ExtResource("1_6g737")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anqqt"]
+atlas = ExtResource("1_6g737")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1mxy"]
+atlas = ExtResource("1_6g737")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb1lh"]
+atlas = ExtResource("1_6g737")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qada6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5jy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhhgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0ueu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy1fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4xg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q53md")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tu761")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyi8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3q40k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anqqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1mxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb1lh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_gyplc"]
+offsets = PackedFloat32Array(0.047619, 0.934524)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lg72r"]
+gradient = SubResource("Gradient_gyplc")
+fill = 1
+fill_from = Vector2(0.5, 0.512931)
+fill_to = Vector2(0.896552, 0.0991379)
+
+[node name="purple_torch" type="AnimatedSprite2D"]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_qada6")
+autoplay = "default"
+script = ExtResource("2_s06hx")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2, 2)
+color = Color(0.712338, 0.000414502, 0.719168, 1)
+energy = 2.0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_lg72r")
+texture_scale = 2.0

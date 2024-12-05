@@ -1,0 +1,229 @@
+[gd_scene load_steps=17 format=4 uid="uid://bp83323cd0rk4"]
+
+[ext_resource type="Script" path="res://scripts/interactibles/elevator.gd" id="1_i4nh2"]
+[ext_resource type="Texture2D" uid="uid://b5xb1fb3c7vlk" path="res://Assets/grounds_sprite/Scaffolding_and_BG_Parts (16 x 16).png" id="2_5ctvf"]
+[ext_resource type="Texture2D" uid="uid://cb2lgweonuegy" path="res://Assets/decor/WallLever.png" id="2_sb1ur"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1djt"]
+atlas = ExtResource("2_sb1ur")
+region = Rect2(0, 0, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfouw"]
+atlas = ExtResource("2_sb1ur")
+region = Rect2(12, 0, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ochrl"]
+atlas = ExtResource("2_sb1ur")
+region = Rect2(24, 0, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoc53"]
+atlas = ExtResource("2_sb1ur")
+region = Rect2(0, 24, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6p3d"]
+atlas = ExtResource("2_sb1ur")
+region = Rect2(12, 24, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbeuo"]
+atlas = ExtResource("2_sb1ur")
+region = Rect2(24, 24, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yagih"]
+atlas = ExtResource("2_sb1ur")
+region = Rect2(0, 48, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chuor"]
+atlas = ExtResource("2_sb1ur")
+region = Rect2(12, 48, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcbva"]
+atlas = ExtResource("2_sb1ur")
+region = Rect2(24, 48, 12, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fvr7t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1djt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfouw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ochrl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uoc53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6p3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbeuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yagih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chuor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcbva")
+}],
+"loop": false,
+"name": &"down",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_poc6y"]
+size = Vector2(78, 19)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7tx3r"]
+texture = ExtResource("2_5ctvf")
+9:1/0 = 0
+11:1/0 = 0
+13:1/0 = 0
+15:1/0 = 0
+17:1/0 = 0
+19:1/0 = 0
+21:1/0 = 0
+1:2/0 = 0
+6:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+21:3/0 = 0
+22:3/0 = 0
+23:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+9:4/0 = 0
+11:4/0 = 0
+13:4/0 = 0
+15:4/0 = 0
+17:4/0 = 0
+19:4/0 = 0
+21:4/0 = 0
+23:4/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+4:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+23:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+4:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+15:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+20:7/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+15:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+20:8/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_juewy"]
+sources/0 = SubResource("TileSetAtlasSource_7tx3r")
+
+[node name="elevetor" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("up_ray", "down_ray", "player_detection_ray", "text", "animation", "timer")]
+z_index = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_i4nh2")
+up_ray = NodePath("celling_detection_ray")
+down_ray = NodePath("down_ray")
+player_detection_ray = NodePath("player_detection_ray")
+text = NodePath("../Label")
+animation = NodePath("AnimatedSprite2D")
+timer = NodePath("timer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+z_index = 1
+position = Vector2(-22, -21)
+sprite_frames = SubResource("SpriteFrames_fvr7t")
+animation = &"down"
+frame = 8
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(7, 7.5)
+shape = SubResource("RectangleShape2D_poc6y")
+
+[node name="elevator" type="TileMapLayer" parent="CharacterBody2D"]
+tile_map_data = PackedByteArray("AAAAAP//AAAEAAgAAAABAP//AAAFAAgAAAACAP//AAAGAAgAAAD+/wAAAAAEAAUAAAD//wAAAAAEAAUAAAAAAAAAAAAEAAUAAAABAAAAAAAEAAUAAAACAAAAAAAEAAUAAAD+////AAAEAAgAAAD/////AAAEAAgAAAA=")
+tile_set = SubResource("TileSet_juewy")
+
+[node name="player_detection_ray" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(-22, -20)
+target_position = Vector2(33, 11)
+collision_mask = 2
+
+[node name="celling_detection_ray" type="RayCast2D" parent="CharacterBody2D"]
+position = Vector2(7, 8)
+target_position = Vector2(-1, -71)
+
+[node name="timer" type="Timer" parent="CharacterBody2D"]
+
+[node name="down_ray" type="RayCast2D" parent="CharacterBody2D"]
+target_position = Vector2(0, 20)
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -70.0
+offset_right = 36.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRESS E "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="CharacterBody2D/timer" to="CharacterBody2D" method="_on_timer_timeout"]

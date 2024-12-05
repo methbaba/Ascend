@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://nxq0b5xcrays"]
+
+[ext_resource type="Script" path="res://scripts/traps/trap_class/arrow_traps.gd" id="1_n58i2"]
+[ext_resource type="PackedScene" uid="uid://beh24edl76b7j" path="res://scenes/traps/arrows/arrow.tscn" id="2_7orw3"]
+[ext_resource type="SpriteFrames" uid="uid://dspfe5lun06ef" path="res://scenes/traps/arrows/arrow_trap_1.tres" id="2_yed8l"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vst7h"]
+b = Vector2(-181, 0)
+
+[node name="arrow_L1" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_yed8l")
+animation = &"open"
+
+[node name="trigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger"]
+shape = SubResource("SegmentShape2D_vst7h")
+
+[node name="arrow_shooter" type="Node2D" parent="." node_paths=PackedStringArray("animations", "trigger")]
+rotation = -3.15905
+script = ExtResource("1_n58i2")
+arrow_obj = ExtResource("2_7orw3")
+animations = NodePath("../AnimatedSprite2D")
+trigger = NodePath("../trigger")

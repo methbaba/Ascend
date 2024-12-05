@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctxamqcx17rhp"]
+
+[ext_resource type="Script" path="res://scripts/traps/sandworm_trap.gd" id="1_4qj17"]
+[ext_resource type="SpriteFrames" uid="uid://d0sowvsbn2f0t" path="res://scenes/traps/sandworm/sandworm_trap.tres" id="2_yjj7c"]
+
+[sub_resource type="Animation" id="Animation_7gcdd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"level_2"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dmg_area_2:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j86t8"]
+resource_name = "level_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"level_2"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dmg_area_2:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7frfq"]
+_data = {
+"RESET": SubResource("Animation_7gcdd"),
+"level_2": SubResource("Animation_j86t8")
+}
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_w2q45"]
+a = Vector2(-25, 14)
+b = Vector2(13, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gagpo"]
+
+[node name="worm_trap_2" type="Node2D" node_paths=PackedStringArray("trigger_1", "dmg_area_1", "animator")]
+z_index = 6
+script = ExtResource("1_4qj17")
+trigger_1 = NodePath("level_2_trigger")
+dmg_area_1 = NodePath("dmg_area_2")
+dmg = 20.0
+animator = NodePath("AnimationPlayer")
+anim_name = "level_2"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_yjj7c")
+animation = &"level_2"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7frfq")
+}
+
+[node name="level_2_trigger" type="Area2D" parent="."]
+position = Vector2(0, -3)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level_2_trigger"]
+position = Vector2(-19, 19)
+shape = SubResource("SegmentShape2D_w2q45")
+
+[node name="dmg_area_2" type="Area2D" parent="."]
+position = Vector2(-26, 24)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dmg_area_2"]
+position = Vector2(2, 3)
+shape = SubResource("CircleShape2D_gagpo")

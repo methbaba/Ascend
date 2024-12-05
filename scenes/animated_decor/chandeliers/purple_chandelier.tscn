@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3ic3g5vvhdk"]
+
+[ext_resource type="Texture2D" uid="uid://biwgnqphyjrn6" path="res://Assets/decor/Chandeliers.png" id="1_of73j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocm4g"]
+atlas = ExtResource("1_of73j")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ts32"]
+atlas = ExtResource("1_of73j")
+region = Rect2(0, 36, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x44ol"]
+atlas = ExtResource("1_of73j")
+region = Rect2(0, 72, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvvfg"]
+atlas = ExtResource("1_of73j")
+region = Rect2(0, 108, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeyaa"]
+atlas = ExtResource("1_of73j")
+region = Rect2(0, 144, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkiw5"]
+atlas = ExtResource("1_of73j")
+region = Rect2(0, 180, 36, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_irvps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocm4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ts32")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x44ol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvvfg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeyaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkiw5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="purple_chandelier" type="AnimatedSprite2D"]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_irvps")
+autoplay = "default"
+frame_progress = 0.560964

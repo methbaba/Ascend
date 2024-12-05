@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="HeightmapGenerator2DSettings" load_steps=13 format=3 uid="uid://dkhnm3tkda3st"]
+
+[ext_resource type="Script" path="res://addons/gaea/modifiers/2D/modifier_2d.gd" id="1_itlj8"]
+[ext_resource type="Script" path="res://addons/gaea/modifiers/2D/carver.gd" id="2_yn6qe"]
+[ext_resource type="Script" path="res://addons/gaea/modifiers/2D/smooth.gd" id="3_rdofx"]
+[ext_resource type="Script" path="res://addons/gaea/modifiers/2D/chunk_aware_modifier_2d.gd" id="4_trvxp"]
+[ext_resource type="Script" path="res://addons/gaea/generators/2D/heightmap_generator/heightmap_generator_2d_settings.gd" id="5_48h2r"]
+[ext_resource type="Script" path="res://addons/gaea/tile_info/tilemap_tile_info.gd" id="6_etyjb"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4ru4b"]
+noise_type = 2
+seed = -1702574240
+frequency = 0.0268
+fractal_gain = 0.4
+domain_warp_enabled = true
+domain_warp_type = 2
+domain_warp_fractal_octaves = 1
+domain_warp_fractal_lacunarity = 4.0
+
+[sub_resource type="Resource" id="Resource_hm5xf"]
+script = ExtResource("2_yn6qe")
+noise = SubResource("FastNoiseLite_4ru4b")
+min = -0.505
+max = 1.0
+bounds_enabled = false
+bounds_max = Vector2(0, 0)
+bounds_min = Vector2(0, 0)
+salt = 2445426856
+enabled = true
+affected_layers = Array[int]([0])
+filter_type = 0
+
+[sub_resource type="Resource" id="Resource_w6ak0"]
+script = ExtResource("3_rdofx")
+iterations = 2
+maximum_empty_neighbors = 4
+enabled = true
+affected_layers = Array[int]([0])
+filter_type = 0
+
+[sub_resource type="Resource" id="Resource_2cnfe"]
+script = ExtResource("4_trvxp")
+salt = 2568696591
+enabled = true
+affected_layers = Array[int]([0])
+filter_type = 0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6xpi0"]
+noise_type = 2
+seed = 146966200
+frequency = 0.03
+cellular_distance_function = 1
+
+[sub_resource type="Resource" id="Resource_j0y0x"]
+script = ExtResource("6_etyjb")
+type = 1
+tilemap_layer = 0
+terrain_set = 0
+terrain = 0
+id = ""
+layer = 0
+
+[resource]
+script = ExtResource("5_48h2r")
+tile = SubResource("Resource_j0y0x")
+noise = SubResource("FastNoiseLite_6xpi0")
+infinite = false
+world_length = 400
+height_offset = 400
+height_intensity = 20
+min_height = 0
+air_layer = true
+modifiers = Array[ExtResource("1_itlj8")]([SubResource("Resource_hm5xf"), SubResource("Resource_w6ak0"), SubResource("Resource_2cnfe")])

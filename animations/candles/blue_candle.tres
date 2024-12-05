@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://xserlib30a47"]
+
+[ext_resource type="Texture2D" uid="uid://cdib4l0c2n1ue" path="res://Assets/grounds_sprite/BlueCandle.png" id="1_s1dlx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu4am"]
+atlas = ExtResource("1_s1dlx")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0wc2"]
+atlas = ExtResource("1_s1dlx")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilqks"]
+atlas = ExtResource("1_s1dlx")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiacw"]
+atlas = ExtResource("1_s1dlx")
+region = Rect2(0, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhbjm"]
+atlas = ExtResource("1_s1dlx")
+region = Rect2(12, 12, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox3p7"]
+atlas = ExtResource("1_s1dlx")
+region = Rect2(24, 12, 12, 12)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu4am")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0wc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilqks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiacw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhbjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox3p7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

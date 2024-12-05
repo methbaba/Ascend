@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3hqsmht2gt2b"]
+
+[ext_resource type="Script" path="res://scripts/UI/FPS counter/fps.gd" id="1_bxyhu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0oob"]
+font_size = 24
+
+[node name="Fps_counter" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FPS"
+label_settings = SubResource("LabelSettings_c0oob")
+script = ExtResource("1_bxyhu")

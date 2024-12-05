@@ -1,0 +1,193 @@
+[gd_scene load_steps=9 format=3 uid="uid://6uma47b8f3ku"]
+
+[ext_resource type="SpriteFrames" uid="uid://oha8kr2s54cp" path="res://animations/traps/celling.tres" id="1_xmfe3"]
+[ext_resource type="Script" path="res://scripts/traps/celling_level_2.gd" id="2_gqxyb"]
+
+[sub_resource type="Animation" id="Animation_5hb25"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"level_3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spike_1:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("dmg_area/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spike_1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -26.5)]
+}
+
+[sub_resource type="Animation" id="Animation_bjket"]
+resource_name = "level_3"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"level_3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 16]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("spike_1:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("dmg_area/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("spike_1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.333333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, -26.5), Vector2(0.5, -20), Vector2(0.5, -10), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ats55"]
+_data = {
+"RESET": SubResource("Animation_5hb25"),
+"level_3": SubResource("Animation_bjket")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1filr"]
+size = Vector2(26.375, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35lkp"]
+size = Vector2(51.5, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awbhf"]
+size = Vector2(82, 20)
+
+[node name="celling_level_3" type="AnimatedSprite2D" node_paths=PackedStringArray("animator", "dmg_area_1", "dmg_area_2", "trigger_area")]
+z_index = 6
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("1_xmfe3")
+animation = &"level_3"
+script = ExtResource("2_gqxyb")
+animator = NodePath("AnimationPlayer")
+dmg_area_1 = NodePath("spike_1")
+dmg_area_2 = NodePath("dmg_area")
+trigger_area = NodePath("trigger_area")
+anim_name = "level_3"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ats55")
+}
+
+[node name="spike_1" type="Area2D" parent="."]
+position = Vector2(0.5, -26.5)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spike_1"]
+position = Vector2(-0.6875, 6.5)
+shape = SubResource("RectangleShape2D_1filr")
+
+[node name="dmg_area" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dmg_area"]
+position = Vector2(0.75, 28.25)
+shape = SubResource("RectangleShape2D_35lkp")
+disabled = true
+
+[node name="trigger_area" type="Area2D" parent="."]
+position = Vector2(-45, 23)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trigger_area"]
+position = Vector2(47, 0)
+shape = SubResource("RectangleShape2D_awbhf")
+
+[node name="reaction_timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="spike_1" to="." method="_on_spike_1_body_entered"]
+[connection signal="body_entered" from="dmg_area" to="." method="_on_dmg_area_body_entered"]
+[connection signal="body_entered" from="trigger_area" to="." method="_on_trigger_area_body_entered"]

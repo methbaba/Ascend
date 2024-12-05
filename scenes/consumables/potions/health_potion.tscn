@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=3 uid="uid://e3cnxcwqypc3"]
+
+[ext_resource type="Texture2D" uid="uid://7qx0tuvv5cfx" path="res://Assets/consumables/potions/Red potions/poç╞o vermelha.png" id="1_vnseq"]
+[ext_resource type="Script" path="res://scripts/consumables/potions/health_potions/health_potion.gd" id="2_s4pgr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8er44"]
+atlas = ExtResource("1_vnseq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7y0eo"]
+atlas = ExtResource("1_vnseq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jhp4"]
+atlas = ExtResource("1_vnseq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egc53"]
+atlas = ExtResource("1_vnseq")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjwsy"]
+atlas = ExtResource("1_vnseq")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh8gm"]
+atlas = ExtResource("1_vnseq")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkr85"]
+atlas = ExtResource("1_vnseq")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66oef"]
+atlas = ExtResource("1_vnseq")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0me2l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8er44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7y0eo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jhp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egc53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjwsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh8gm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkr85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66oef")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbmbl"]
+
+[node name="health_potion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_0me2l")
+autoplay = "default"
+script = ExtResource("2_s4pgr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bbmbl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

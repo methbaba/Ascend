@@ -4,6 +4,7 @@ extends Node
 @export var max_health:float = 100 
 #@export var health_bar:TextureProgressBar
 var health:float 
+var can_take_damage:bool =true
 func _ready() -> void:
 	health= max_health
 	health_bar.max_value = max_health
@@ -12,12 +13,14 @@ func _ready() -> void:
 	SignalManager.on_health_healed.connect(on_heal)
 
 func on_damage(dmg):
-	health -= dmg
-	health_bar.value=health
+	if can_take_damage:
+		health -= dmg
+		health_bar.value=health
+		
+	iframes()
 	if health <=0:
-		print(health)
-		SignalManager.on_death.emit()
-	
+			print(health)
+			SignalManager.on_death.emit()
 func on_heal(heal):
 	health += heal
 	health_bar.value = health
@@ -25,3 +28,7 @@ func on_heal(heal):
 	if health >=max_health:
 		health=max_health
 	
+func iframes():
+	can_take_damage=false
+	await get_tree().create_timer(1).timeout
+	can_take_damage=true

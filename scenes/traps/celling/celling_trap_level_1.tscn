@@ -100,6 +100,7 @@ autoplay = "level_1"
 script = ExtResource("2_fid5n")
 
 [node name="spikes" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spikes"]
@@ -111,5 +112,3 @@ libraries = {
 "": SubResource("AnimationLibrary_isaj0")
 }
 autoplay = "first"
-
-[connection signal="body_entered" from="spikes" to="." method="_on_spikes_body_entered"]

@@ -501,15 +501,17 @@ graph_offset = Vector2(21, -175)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tf0r8"]
 polygon = PackedVector2Array(2, -74, 18, -72, 20, -66, 20, -56, 18, -48, 26, -46, 20, -16, 24, -8, -8, -8, -2, -28, -4, -34)
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("marker")]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("animator", "marker", "sword_attack_area")]
 z_index = 5
 position = Vector2(-5, 30)
 collision_layer = 2
 floor_block_on_wall = false
 floor_snap_length = 2.3
 script = ExtResource("1_e3swp")
+animator = NodePath("AnimationPlayer")
 JUMP_VELOCITY = -650.0
 marker = NodePath("flipper_marker")
+sword_attack_area = NodePath("flipper_marker/AnimatedSprite2D/sword_attack_area2d")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -612,16 +614,5 @@ fit_content = true
 scroll_active = false
 tab_size = 3
 
-[node name="attack_timer" type="Timer" parent="."]
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_tf0r8")
-
-[node name="death_timer" type="Timer" parent="."]
-
-[node name="hurt_timer" type="Timer" parent="."]
-
-[connection signal="body_entered" from="flipper_marker/AnimatedSprite2D/sword_attack_area2d" to="." method="_on_sword_attack_area_2d_body_entered"]
-[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="death_timer" to="health" method="_on_death_timer_timeout"]
-[connection signal="timeout" from="hurt_timer" to="." method="_on_hurt_timer_timeout"]

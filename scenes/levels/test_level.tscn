@@ -32,12 +32,6 @@
 [ext_resource type="PackedScene" uid="uid://dynmbr8o22f0s" path="res://scenes/traps/fire/fire_trap.tscn" id="32_2st6v"]
 [ext_resource type="PackedScene" uid="uid://nxq0b5xcrays" path="res://scenes/traps/arrows/arrow_trap_1.tscn" id="33_scdgt"]
 
-[sub_resource type="Resource" id="Resource_oe1cb"]
-script = ExtResource("4_jt4jh")
-duration = 1.0
-transition = 0
-ease = 2
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqey6"]
 size = Vector2(562, 616)
 
@@ -47,36 +41,14 @@ duration = 1.0
 transition = 0
 ease = 2
 
+[sub_resource type="Resource" id="Resource_oe1cb"]
+script = ExtResource("4_jt4jh")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="test_level" type="Node2D"]
 position = Vector2(-71, -584)
-
-[node name="player" parent="." instance=ExtResource("1_rfh5j")]
-position = Vector2(966, 364)
-scale = Vector2(0.5, 0.5)
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-physics_interpolation_mode = 1
-position = Vector2(0, -169.76)
-scale = Vector2(2, 2)
-zoom = Vector2(1.5, 1.5)
-
-[node name="PhantomCameraHost" type="Node" parent="player/Camera2D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("2_antlu")
-
-[node name="PhantomCamera2D" type="Node2D" parent="player/Camera2D/PhantomCameraHost" node_paths=PackedStringArray("follow_target")]
-position = Vector2(895, -304.88)
-script = ExtResource("3_6hc0a")
-priority = 1
-follow_mode = 2
-follow_target = NodePath("../../..")
-zoom = Vector2(1.5, 1.5)
-tween_resource = SubResource("Resource_oe1cb")
-follow_offset = Vector2(0, -84.88)
-follow_damping = true
-follow_damping_value = Vector2(0.3, 0.2)
-draw_limits = true
 
 [node name="camera_manager" parent="." instance=ExtResource("5_3nhnn")]
 
@@ -93,6 +65,34 @@ position = Vector2(17.9999, 39)
 scale = Vector2(0.56, 0.98)
 script = ExtResource("3_6hc0a")
 tween_resource = SubResource("Resource_bqhrc")
+draw_limits = true
+
+[node name="player" parent="." instance=ExtResource("1_rfh5j")]
+position = Vector2(1098, 864)
+scale = Vector2(0.5, 0.5)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+physics_interpolation_mode = 1
+position = Vector2(0, -169.76)
+scale = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
+
+[node name="PhantomCameraHost" type="Node" parent="player/Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_antlu")
+
+[node name="PhantomCamera2D" type="Node2D" parent="player/Camera2D/PhantomCameraHost" node_paths=PackedStringArray("follow_target")]
+position = Vector2(1027, 195.12)
+script = ExtResource("3_6hc0a")
+priority = 1
+follow_mode = 2
+follow_target = NodePath("../../..")
+zoom = Vector2(1.5, 1.5)
+tween_resource = SubResource("Resource_oe1cb")
+follow_offset = Vector2(0, -84.88)
+follow_damping = true
+follow_damping_value = Vector2(0.3, 0.2)
 draw_limits = true
 
 [node name="tilemap_holder" type="Node" parent="."]

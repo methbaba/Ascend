@@ -132,15 +132,12 @@ size = Vector2(367, 8)
 
 [node name="arrow_2" type="Node2D"]
 
-[node name="arrow_trap_2" type="Node2D" parent="." node_paths=PackedStringArray("animator", "trigger")]
+[node name="arrow_trap_2" type="Node2D" parent="." node_paths=PackedStringArray("animations", "trigger")]
 rotation = -3.14159
 script = ExtResource("1_fxkyf")
-animator = NodePath("../AnimatedSprite2D")
-damage = 20.0
+arrow_obj = ExtResource("2_xwaow")
+animations = NodePath("../AnimatedSprite2D")
 trigger = NodePath("../trigger")
-start_anim = "open"
-end_name = "close_2"
-arrow = ExtResource("2_xwaow")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xqawt")

@@ -7,5 +7,5 @@ extends Node2D
 func _ready() -> void:
 	dmg_area.body_entered.connect(on_dmg)
 	
-func on_dmg():
+func on_dmg(_body:Node)->void:
 	SignalManager.health_changed.emit(dmg)

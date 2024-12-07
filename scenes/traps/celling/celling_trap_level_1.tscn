@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccmj5u6rm7igb"]
 
 [ext_resource type="SpriteFrames" uid="uid://oha8kr2s54cp" path="res://animations/traps/celling.tres" id="1_axqyk"]
-[ext_resource type="Script" path="res://scenes/traps/celling/celling_trap_level_1.gd" id="2_udxel"]
+[ext_resource type="Script" path="res://scenes/traps/celling/celling_simple.gd" id="2_dc7gm"]
 
 [sub_resource type="Animation" id="Animation_ldqnp"]
 length = 0.001
@@ -91,12 +91,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_84cfs"]
 size = Vector2(33, 7.5)
 
-[node name="celling_trap_level_1" type="AnimatedSprite2D"]
+[node name="celling_trap_level_1" type="AnimatedSprite2D" node_paths=PackedStringArray("anim", "dmg_area")]
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_axqyk")
 animation = &"level_1"
 autoplay = "level_1"
-script = ExtResource("2_udxel")
+script = ExtResource("2_dc7gm")
+anim = NodePath("AnimationPlayer")
+dmg_area = NodePath("Area2D")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -106,11 +108,8 @@ autoplay = "first"
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-0.5, -19)
-collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, -3.75)
 shape = SubResource("RectangleShape2D_84cfs")
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

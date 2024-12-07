@@ -784,7 +784,7 @@ libraries = {
 [node name="Marker2D" type="Marker2D" parent="."]
 
 [node name="wall_detector" type="Area2D" parent="Marker2D"]
-position = Vector2(43, -16)
+position = Vector2(44, 7)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/wall_detector"]

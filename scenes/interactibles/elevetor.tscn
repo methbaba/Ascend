@@ -170,7 +170,7 @@ sources/0 = SubResource("TileSetAtlasSource_7tx3r")
 [node name="elevetor" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("up_ray", "down_ray", "player_detection_ray", "text", "animation", "timer")]
-z_index = 1
+z_index = -1
 scale = Vector2(2, 2)
 script = ExtResource("1_i4nh2")
 up_ray = NodePath("celling_detection_ray")

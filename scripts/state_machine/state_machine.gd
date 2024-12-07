@@ -1,5 +1,5 @@
 extends Node
-
+class_name StateMachine
 @export var intial_state: State
 var current_state: State
 var states:Dictionary={}

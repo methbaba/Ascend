@@ -56,7 +56,7 @@ tile_map_data = PackedByteArray("AADl/xYAAgAEAAYAAADl/xUAAgAEAAUAAADl/xQAAgAEAAQ
 tile_set = ExtResource("1_p8pjv")
 
 [node name="player" parent="." instance=ExtResource("2_mobsh")]
-position = Vector2(-636, 482)
+position = Vector2(3084, 422)
 scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -71,7 +71,7 @@ process_physics_priority = 300
 script = ExtResource("3_gcd0k")
 
 [node name="PhantomCamera2D" type="Node2D" parent="player/Camera2D/PhantomCameraHost" node_paths=PackedStringArray("follow_target")]
-position = Vector2(-636, 397.12)
+position = Vector2(3084, 337.12)
 script = ExtResource("4_hrc2l")
 priority = 1
 follow_mode = 2

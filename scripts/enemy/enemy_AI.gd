@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 
 	if chase:
 		position += delta*((player.position) - position)/follow_speed
-		position.y -=bat_y_addition
+		
 	
 	if wander:
 		

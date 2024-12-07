@@ -91,10 +91,10 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7hfle"]
 
-[node name="saw_trap_2" type="Node2D" node_paths=PackedStringArray("dmg_area", "animator")]
+[node name="saw_trap_2" type="Node2D" node_paths=PackedStringArray("timer", "dmg_area")]
 script = ExtResource("1_8lgyi")
+timer = NodePath("dmg_timer")
 dmg_area = NodePath("dmg_area")
-animator = NodePath("AnimationPlayer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_n7mte")
@@ -113,3 +113,5 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dmg_area"]
 position = Vector2(-1, -26)
 shape = SubResource("CircleShape2D_7hfle")
+
+[node name="dmg_timer" type="Timer" parent="."]

@@ -30,11 +30,15 @@ func _physics_process(delta: float) -> void:
 
 func on_body_entered(body:Node2D)->void :
 	print("arrow has collided ")
-	if animation_is_present:
+	
+	if animation_is_present :
+		
 		animator.play(bullet_anim_name)
-		SignalManager.health_changed.emit(bullet_dmg)
+		if body.name=="player":
+			SignalManager.health_changed.emit(bullet_dmg)
 		await get_tree().create_timer(animator.get_current_animation_length()).timeout		
 		bullet_body.queue_free()
 	else: 
-		SignalManager.health_changed.emit(bullet_dmg)
+		if body.name=="player":
+			SignalManager.health_changed.emit(bullet_dmg)
 		bullet_body.queue_free()

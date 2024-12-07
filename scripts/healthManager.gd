@@ -30,5 +30,6 @@ func on_heal(heal):
 	
 func iframes():
 	can_take_damage=false
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(1,true,true,false).timeout
 	can_take_damage=true
+	

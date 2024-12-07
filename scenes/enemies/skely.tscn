@@ -566,10 +566,11 @@ animation_name = "death"
 script = ExtResource("10_blimq")
 intial_state = NodePath("wakeup")
 
-[node name="wakeup" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "player_detection", "animator")]
+[node name="wakeup" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "left_ray", "right_ray", "animator")]
 script = ExtResource("11_7vm24")
 enemy = NodePath("../..")
-player_detection = [NodePath("../../player_dtection_left"), NodePath("../../player_detection_right")]
+left_ray = NodePath("../../player_dtection_left")
+right_ray = NodePath("../../player_detection_right")
 animator = NodePath("../../AnimationPlayer")
 
 [node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animator", "player_detection")]

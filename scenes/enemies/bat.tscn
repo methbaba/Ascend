@@ -484,11 +484,9 @@ _data = {
 size = Vector2(396, 185)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2j6ip"]
-radius = 13.0384
+radius = 17.0
 
 [node name="bats" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 4
-collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_yk66p")
 follow_speed = 1

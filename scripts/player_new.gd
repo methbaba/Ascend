@@ -61,8 +61,14 @@ func _physics_process(delta: float) -> void:
 			
 		if Input.is_action_just_pressed("player_attack_1"):
 			attack=true
-			sword_attack_area.body_entered.connect(on_attack)
 			
+			if !sword_attack_area.body_entered.is_connected(on_attack):
+				sword_attack_area.body_entered.connect(on_attack)
+			animator.animation_finished
+			
+			
+			
+		if Input.is_action_just_released("player_attack_1"):
 			await get_tree().create_timer(0.3).timeout
 			attack=false
 	move_and_slide()

@@ -93,6 +93,10 @@ inventory={
 2d_physics/layer_2="PLAYER"
 2d_physics/layer_3="ENEMY"
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

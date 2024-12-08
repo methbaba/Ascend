@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var marker:Marker2D
 @export var max_jumps:int=2 
 @export var sword_attack_area:Area2D
-
+@export var attack_timer:Timer
 var jump:bool =false
 var walk:bool = false
 var jump_counter:int
@@ -64,22 +64,26 @@ func _physics_process(delta: float) -> void:
 			
 			if !sword_attack_area.body_entered.is_connected(on_attack):
 				sword_attack_area.body_entered.connect(on_attack)
-			animator.animation_finished
+			
+			attack_timer.start(0.3)
 			
 			
-			
-		if Input.is_action_just_released("player_attack_1"):
-			await get_tree().create_timer(0.3).timeout
-			attack=false
+		
 	move_and_slide()
 
 
 
 func on_attack(body:Node)->void:
-	for child in body.get_children():
-		if child is Damagable:
-			child.on_attacked(sword_damage)
+	if body.is_in_group("enemy"):
+		for child in body.get_children():
+			if child.name =="Damagable":
+				Hitstopmanager.stop_small()
+				child.on_attacked(sword_damage)
 	
 
 	
 	
+
+
+func _on_attack_timer_timeout() -> void:
+	attack =false

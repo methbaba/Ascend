@@ -8,13 +8,14 @@ class_name Damagable
 @export var enemy:CharacterBody2D
 @export var is_animated:bool =false
 @export var hurt_anim:String= "hurt"
-@export var death_anim:String="death"
+@export var death_anim:String="dead"
 
 func on_attacked(dmg):
 	if is_animated:
 		animated.play(hurt_anim)
 		health-=dmg
 		Hitstopmanager.stop_small()
+		
 	else:
 		health-=dmg
 		
@@ -23,6 +24,7 @@ func on_attacked(dmg):
 	if health<=0:
 		if is_animated:
 			print("dead")
+			animated.stop(true)
 			animated.play(death_anim)
 			animated.animation_finished	
 			await get_tree().create_timer(1).timeout

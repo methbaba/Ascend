@@ -110,10 +110,21 @@ tracks/7/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Marker2D/sword/CollisionShape2D:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ct5nv"]
 resource_name = "attack"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -149,6 +160,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D/sword/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_wasyv"]
@@ -253,7 +276,6 @@ tracks/7/keys = {
 [sub_resource type="Animation" id="Animation_1o8cr"]
 resource_name = "hurt"
 length = 0.3
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -417,12 +439,6 @@ _data = {
 "idle": SubResource("Animation_hkcwy"),
 "walk": SubResource("Animation_qfi2u")
 }
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_6uakn"]
-b = Vector2(26, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4q57"]
-size = Vector2(28, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_keih7"]
 atlas = ExtResource("2_ve78s")
@@ -753,11 +769,17 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_6uakn"]
+b = Vector2(26, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4q57"]
+size = Vector2(25, 13.3333)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxywv"]
 size = Vector2(247, 31)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_elkn4"]
-b = Vector2(-124, 0)
+b = Vector2(-121.5, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_omj21"]
 b = Vector2(121, 0)
@@ -766,8 +788,17 @@ b = Vector2(121, 0)
 radius = 30.0
 
 [node name="skeleton_L3" type="CharacterBody2D" groups=["enemy"]]
+scale = Vector2(1.2, 1.2)
 collision_layer = 4
 collision_mask = 5
+
+[node name="Damagable" type="Node" parent="." node_paths=PackedStringArray("animated", "enemy")]
+script = ExtResource("8_bus5l")
+health = 70
+animated = NodePath("../AnimationPlayer")
+destroy = true
+enemy = NodePath("..")
+is_animated = true
 
 [node name="enemy_attributes" type="Node" parent="." node_paths=PackedStringArray("enemy")]
 script = ExtResource("1_5mjeq")
@@ -783,7 +814,12 @@ libraries = {
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+sprite_frames = SubResource("SpriteFrames_2r62s")
+animation = &"idle"
+
 [node name="wall_detector" type="Area2D" parent="Marker2D"]
+visible = false
 position = Vector2(44, 7)
 collision_layer = 0
 
@@ -797,14 +833,13 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/sword"]
-position = Vector2(16, 2.5)
+position = Vector2(14.5, 4.16667)
 shape = SubResource("RectangleShape2D_n4q57")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
-sprite_frames = SubResource("SpriteFrames_2r62s")
-animation = &"idle"
+disabled = true
+debug_color = Color(0.671916, 0.164603, 0.210351, 0.42)
 
 [node name="trigger" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -820,6 +855,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="left_detector"]
 position = Vector2(0, -16)
 shape = SubResource("SegmentShape2D_elkn4")
+debug_color = Color(0.368434, 0.606369, 0.313731, 0.42)
 
 [node name="right_detector" type="Area2D" parent="."]
 position = Vector2(-33, -4)
@@ -829,8 +865,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="right_detector"]
 position = Vector2(33, 4)
 shape = SubResource("SegmentShape2D_omj21")
+debug_color = Color(0.849461, 0.350029, 0.353474, 0.42)
 
 [node name="dmg_area" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -839,33 +877,14 @@ shape = SubResource("CircleShape2D_lpljn")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("intial_state")]
 script = ExtResource("1_pl2ay")
-intial_state = NodePath("idle")
+intial_state = NodePath("wander")
 
 [node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("animator", "trigger_area")]
 script = ExtResource("3_gv0nb")
 animator = NodePath("../../AnimationPlayer")
 trigger_area = NodePath("../../trigger")
 
-[node name="chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy_character", "animator", "dmg_area", "trigger_area", "left_area", "right_area", "marker_flip")]
-script = ExtResource("5_w0h5g")
-speed = 45.0
-enemy_character = NodePath("../..")
-animator = NodePath("../../AnimationPlayer")
-dmg_area = NodePath("../../dmg_area")
-trigger_area = NodePath("../../trigger")
-left_area = NodePath("../../left_detector")
-right_area = NodePath("../../right_detector")
-marker_flip = NodePath("../../Marker2D")
-
-[node name="attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animator", "dmg_area", "trigger_area", "sword_area")]
-script = ExtResource("6_eq4y8")
-enemy = NodePath("../..")
-animator = NodePath("../../AnimationPlayer")
-dmg_area = NodePath("../../dmg_area")
-trigger_area = NodePath("../../trigger")
-sword_area = NodePath("../../Marker2D/sword")
-
-[node name="wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy_character", "animator", "wall_detector", "trigger_area", "flip_marker")]
+[node name="wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy_character", "animator", "wall_detector", "trigger_area", "flip_marker", "left_area", "right_area")]
 script = ExtResource("7_t2qu1")
 speed = 15.0
 enemy_character = NodePath("../..")
@@ -874,12 +893,27 @@ wall_detector = NodePath("../../Marker2D/wall_detector")
 trigger_area = NodePath("../../trigger")
 wander_speed = 25
 flip_marker = NodePath("../../Marker2D")
+left_area = NodePath("../../left_detector")
+right_area = NodePath("../../right_detector")
 
-[node name="Damagable" type="Node" parent="." node_paths=PackedStringArray("animated", "enemy")]
-script = ExtResource("8_bus5l")
-health = 70
-animated = NodePath("../AnimationPlayer")
-destroy = true
-enemy = NodePath("..")
-is_animated = true
-death_anim = "dead"
+[node name="chase" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy_character", "animator", "dmg_area", "wall_detector", "trigger_area", "left_area", "right_area", "marker_flip")]
+script = ExtResource("5_w0h5g")
+speed = 45.0
+enemy_character = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+dmg_area = NodePath("../../dmg_area")
+wall_detector = NodePath("../../Marker2D/wall_detector")
+trigger_area = NodePath("../../trigger")
+left_area = NodePath("../../left_detector")
+right_area = NodePath("../../right_detector")
+marker_flip = NodePath("../../Marker2D")
+
+[node name="attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy", "animator", "dmg_area", "trigger_area", "sword_area", "right_area", "left_area")]
+script = ExtResource("6_eq4y8")
+enemy = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+dmg_area = NodePath("../../dmg_area")
+trigger_area = NodePath("../../trigger")
+sword_area = NodePath("../../Marker2D/sword")
+right_area = NodePath("../../right_detector")
+left_area = NodePath("../../left_detector")

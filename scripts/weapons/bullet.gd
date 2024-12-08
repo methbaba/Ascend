@@ -21,12 +21,13 @@ func _physics_process(delta: float) -> void:
 		var collison=bullet_body.move_and_collide(bullet_body.velocity)
 
 func on_body_entered(body:Node2D)->void :
-	print("blasted")
+	
 	if body.is_in_group("enemy"):
+		bullet_body.velocity = Vector2.ZERO
 		for child in body.get_children():
 			if child.name =="Damagable":
-				Hitstopmanager.stop_small()
 				child.on_attacked(bullet_dmg)
 	animator.play(animation_name)
 	await get_tree().create_timer(animator.get_current_animation_length()).timeout		
+	Hitstopmanager.stop_small()
 	bullet_body.queue_free()

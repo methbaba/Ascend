@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://b28um2h6nrny5"]
+[gd_scene load_steps=22 format=4 uid="uid://b28um2h6nrny5"]
 
 [ext_resource type="TileSet" uid="uid://d1wf1dh4ja5ae" path="res://Assets/tilesets/level_1.tres" id="1_p8pjv"]
 [ext_resource type="TileSet" uid="uid://w5ayf2a7tl7s" path="res://scenes/levels/dark_level.tres" id="2_fu4b6"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bp83323cd0rk4" path="res://scenes/interactibles/elevetor.tscn" id="12_s6u5f"]
 [ext_resource type="PackedScene" uid="uid://be4cdrjjxhw4q" path="res://scenes/enemies/bat.tscn" id="12_uovdc"]
 [ext_resource type="PackedScene" uid="uid://nxq0b5xcrays" path="res://scenes/traps/arrows/arrow_trap_1.tscn" id="14_gasvc"]
+[ext_resource type="PackedScene" uid="uid://cx77aso140ygq" path="res://scenes/enemies/skely.tscn" id="18_l6q0c"]
 
 [sub_resource type="Resource" id="Resource_lrsdm"]
 script = ExtResource("5_tabph")
@@ -55,7 +56,6 @@ tile_set = ExtResource("1_p8pjv")
 rendering_quadrant_size = 64
 
 [node name="decor" type="TileMapLayer" parent="tilemap_holder"]
-visible = false
 tile_map_data = PackedByteArray("AADl/xYAAgAEAAYAAADl/xUAAgAEAAUAAADl/xQAAgAEAAQAAADt/xgAAgAEAAYAAADt/xcAAgAEAAUAAADt/xYAAgAEAAUAAADt/xUAAgAEAAQAAADa/xIAAgAHAAYAAADa/xEAAgAHAAUAAADZ/xIAAgAGAAYAAADZ/xEAAgAGAAUAAADJ/xcAAgAHAAYAAADJ/xYAAgAHAAUAAADI/xcAAgAGAAYAAADI/xYAAgAGAAUAAAAYAAoAAgAHAAYAAAAYAAkAAgAHAAYAAAAYAAgAAgAHAAUAAAAXAAoAAgAHAAYAAAAXAAkAAgAHAAYAAAAXAAgAAgAHAAUAAAAWAAoAAgAGAAYAAAAWAAkAAgAGAAYAAAAWAAgAAgAGAAUAAAAcAAkAAgAHAAYAAAAcAAgAAgAHAAUAAAAbAAkAAgAGAAYAAAAbAAgAAgAGAAUAAAAcAAoAAgAHAAYAAAAbAAoAAgAGAAYAAAAxAA8AAgAEAAYAAAAxAA4AAgAEAAUAAAAxAA0AAgAEAAUAAAAxAAwAAgAEAAUAAAAxAAsAAgAEAAUAAAAxAAoAAgAEAAUAAAAxAAkAAgAEAAQAAAAzAA0AAgAEAAYAAAAzAAwAAgAEAAQAAAAvABIAAgAEAAYAAAAvABEAAgAEAAUAAAAvABAAAgAEAAQAAAAhABEAAgAHAAYAAAAhABAAAgAHAAYAAAAhAA8AAgAHAAUAAAAgABEAAgAHAAYAAAAgABAAAgAHAAYAAAAgAA8AAgAHAAUAAAAfABEAAgAGAAYAAAAfABAAAgAGAAYAAAAfAA8AAgAGAAUAAABeABEAAgAEAAYAAABeABAAAgAEAAUAAABeAA8AAgAEAAUAAABeAA4AAgAEAAUAAABeAA0AAgAEAAUAAABeAAwAAgAEAAQAAABgABEAAgAEAAYAAABgABAAAgAEAAUAAABgAA8AAgAEAAQAAABaAAwAAgAHAAYAAABaAAsAAgAHAAUAAABZAAwAAgAGAAYAAABZAAsAAgAGAAUAAAB2AA4AAgAEAAYAAAB2AA0AAgAEAAUAAAB2AAwAAgAEAAUAAAB2AAsAAgAEAAQAAABtABcAAgAHAAYAAABtABYAAgAHAAUAAABsABcAAgAGAAYAAABsABYAAgAGAAUAAABxABcAAgAHAAYAAABxABYAAgAHAAYAAABxABUAAgAHAAUAAABwABcAAgAGAAYAAABwABYAAgAGAAYAAABwABUAAgAGAAUAAAByABcAAgAGAAgAAAByABYAAgAHAAUAAAByABUAAgAHAAUAAAB3ABcAAgAGAAgAAAB2ABcAAgAFAAgAAAB1ABcAAgAFAAgAAAB0ABcAAgAEAAgAAADFABMAAgAHAAYAAADFABIAAgAHAAYAAADFABEAAgAHAAUAAADEABMAAgAGAAYAAADEABIAAgAGAAYAAADEABEAAgAGAAUAAADGABMAAgAHAAYAAADGABIAAgAHAAYAAADGABEAAgAEAAQAAAD5ABAAAgAHAAYAAAD5AA8AAgAHAAUAAAD4ABAAAgAHAAYAAAD4AA8AAgAHAAUAAAD3ABAAAgAGAAYAAAD3AA8AAgAGAAUAAAACARIAAgAHAAYAAAACAREAAgAHAAYAAAACARAAAgAHAAUAAAABARIAAgAGAAYAAAABAREAAgAGAAYAAAABARAAAgAGAAUAAAD8ABQAAgAEAAYAAAD8ABMAAgAEAAUAAAD8ABIAAgAEAAUAAAD8ABEAAgAEAAUAAAD8ABAAAgAEAAUAAAD8AA8AAgAEAAUAAAD8AA4AAgAEAAUAAAD8AA0AAgAEAAQAAAAPAQ8AAgAEAAYAAAAPAQ4AAgAEAAUAAAAPAQ0AAgAEAAUAAAAPAQwAAgAEAAUAAAAPAQsAAgAEAAUAAAAPAQoAAgAEAAUAAAAPAQkAAgAEAAUAAAAPAQgAAgAEAAQAAAASARQAAgAEAAYAAAASARMAAgAEAAUAAAASARIAAgAEAAUAAAASAREAAgAEAAQAAAA=")
 tile_set = ExtResource("1_p8pjv")
 
@@ -66,7 +66,7 @@ position = Vector2(-53, 20)
 tile_set = ExtResource("1_p8pjv")
 
 [node name="player" parent="." instance=ExtResource("2_mobsh")]
-position = Vector2(332, 617)
+position = Vector2(575, 78)
 scale = Vector2(0.5, 0.5)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -74,6 +74,7 @@ physics_interpolation_mode = 1
 position = Vector2(0, -169.76)
 scale = Vector2(2, 2)
 zoom = Vector2(2, 2)
+process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="player/Camera2D"]
 process_priority = 300
@@ -82,7 +83,7 @@ script = ExtResource("3_gcd0k")
 
 [node name="PhantomCamera2D" type="Node2D" parent="player/Camera2D/PhantomCameraHost" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(332, 532.12)
+position = Vector2(575, -6.88)
 script = ExtResource("4_hrc2l")
 priority = 1
 follow_mode = 2
@@ -268,3 +269,6 @@ rotation = 6.28319
 scale = Vector2(-1.5, 1.5)
 
 [node name="worms" type="Node" parent="traps2"]
+
+[node name="skely" parent="." instance=ExtResource("18_l6q0c")]
+position = Vector2(2556, 597)

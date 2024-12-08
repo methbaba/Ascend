@@ -487,6 +487,8 @@ size = Vector2(396, 185)
 radius = 17.0
 
 [node name="bats" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_yk66p")
 follow_speed = 1

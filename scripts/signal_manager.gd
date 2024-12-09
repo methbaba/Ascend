@@ -19,3 +19,13 @@ signal on_health_healed
 ## attack signals 
 
 #signal attacking
+
+
+func _ready() -> void:
+	SignalManager.on_death.connect(on_player_death)
+	
+	
+
+func on_player_death():
+	await get_tree().create_timer(1.5).timeout
+	get_tree().reload_current_scene()

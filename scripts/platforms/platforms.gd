@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-
+@export var dest_time:float= 0.5
 @export var horizontal:bool=false
 @export var vertical:bool=false
 @export var fallable:bool=false
@@ -52,7 +52,7 @@ func trigger_enter(body:Node)->void:
 		animator.play("shake")
 		await get_tree().create_timer(1).timeout
 		velocity = get_gravity() 
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(dest_time).timeout
 		queue_free()
 
 func left_trigger_enter(body:Node)->void:

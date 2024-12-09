@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c31kqlte6agg8"
-path="res://.godot/imported/Toxic Trap - Level 1.png-d7092e64d767cc0e348f7168b81cdd7d.ctex"
+uid="uid://bi0at3ctxukpe"
+path="res://.godot/imported/gdb-playstation-3_25.png-970caea7c4733417b1e39bb6ea94adbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/traps/Toxic waste/Toxic Trap - Level 1.png"
-dest_files=["res://.godot/imported/Toxic Trap - Level 1.png-d7092e64d767cc0e348f7168b81cdd7d.ctex"]
+source_file="res://Assets/UI/touch/ps buttons/gdb-playstation-3_25.png"
+dest_files=["res://.godot/imported/gdb-playstation-3_25.png-970caea7c4733417b1e39bb6ea94adbc.ctex"]
 
 [params]
 

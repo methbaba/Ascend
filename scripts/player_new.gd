@@ -26,8 +26,7 @@ func on_hurt(dmg):
 func on_dead():
 	dead=true
 	velocity= Vector2.ZERO
-	await get_tree().create_timer(1.5).timeout
-	get_tree().reload_current_scene()
+	
 	
 func _physics_process(delta: float) -> void:
 	if !dead:

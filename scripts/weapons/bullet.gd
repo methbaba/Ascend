@@ -25,7 +25,7 @@ func on_body_entered(body:Node2D)->void :
 	if body.is_in_group("enemy"):
 		
 		for child in body.get_children():
-			if child.name =="Damagable":
+			if child is Damagable:
 				child.on_attacked(bullet_dmg)
 				
 	animator.play(animation_name)

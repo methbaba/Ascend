@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://b28um2h6nrny5"]
+[gd_scene load_steps=26 format=4 uid="uid://b28um2h6nrny5"]
 
 [ext_resource type="TileSet" uid="uid://d1wf1dh4ja5ae" path="res://Assets/tilesets/level_1.tres" id="1_p8pjv"]
 [ext_resource type="PackedScene" uid="uid://do8vos6kh0rdg" path="res://scenes/UI/touch_controls.tscn" id="1_wcedt"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_hrc2l"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_tabph"]
 [ext_resource type="PackedScene" uid="uid://dg5p180el0qsu" path="res://scenes/camera/camera_manager.tscn" id="6_xfi2u"]
+[ext_resource type="PackedScene" uid="uid://dmtfgp2hsnpae" path="res://scenes/traps/spear.tscn" id="8_6rwrr"]
 [ext_resource type="PackedScene" uid="uid://ctt2dpa2frivj" path="res://scenes/consumables/coins&gems/copper_coin.tscn" id="8_eg5al"]
 [ext_resource type="PackedScene" uid="uid://bm24mlxssym1a" path="res://scenes/consumables/coins&gems/silver_coin.tscn" id="9_vef75"]
 [ext_resource type="PackedScene" uid="uid://ciseevk44sg0y" path="res://scenes/chests/wooden.tscn" id="10_py4hf"]
@@ -20,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://be4cdrjjxhw4q" path="res://scenes/enemies/bat.tscn" id="12_uovdc"]
 [ext_resource type="PackedScene" uid="uid://nxq0b5xcrays" path="res://scenes/traps/arrows/arrow_trap_1.tscn" id="14_gasvc"]
 [ext_resource type="PackedScene" uid="uid://cx77aso140ygq" path="res://scenes/enemies/skely.tscn" id="18_l6q0c"]
+[ext_resource type="PackedScene" uid="uid://c1p8i2w7q0s00" path="res://scenes/traps/spike_bed.tscn" id="21_7ul8o"]
 
 [sub_resource type="Resource" id="Resource_lrsdm"]
 script = ExtResource("5_tabph")
@@ -291,3 +293,25 @@ position = Vector2(421, 541)
 horizontal = true
 fallable = true
 speed = 35.0
+
+[node name="spike_bed" parent="." instance=ExtResource("21_7ul8o")]
+position = Vector2(786, 618)
+
+[node name="spike_bed2" parent="." instance=ExtResource("21_7ul8o")]
+position = Vector2(819, 618)
+
+[node name="spike_bed3" parent="." instance=ExtResource("21_7ul8o")]
+position = Vector2(852, 618)
+
+[node name="spike_bed4" parent="." instance=ExtResource("21_7ul8o")]
+position = Vector2(886, 618)
+
+[node name="spike_bed5" parent="." instance=ExtResource("21_7ul8o")]
+position = Vector2(919, 618)
+
+[node name="spike_bed6" parent="." instance=ExtResource("21_7ul8o")]
+position = Vector2(953, 619)
+
+[node name="spear_bed" parent="." instance=ExtResource("8_6rwrr")]
+z_index = 5
+position = Vector2(2708, 497)

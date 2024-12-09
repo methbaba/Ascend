@@ -15,7 +15,7 @@ func on_attacked(dmg):
 		animated.play(hurt_anim)
 		health-=dmg
 		Hitstopmanager.stop_small()
-		
+		animated.play("walk")
 	else:
 		health-=dmg
 		

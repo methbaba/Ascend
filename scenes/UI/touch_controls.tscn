@@ -1,13 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://do8vos6kh0rdg"]
+[gd_scene load_steps=16 format=3 uid="uid://do8vos6kh0rdg"]
 
 [ext_resource type="Texture2D" uid="uid://d4li0gclrsw20" path="res://Assets/UI/touch/arrows_08.png" id="1_3gx0v"]
+[ext_resource type="Texture2D" uid="uid://bi0at3ctxukpe" path="res://Assets/UI/touch/ps buttons/gdb-playstation-3_25.png" id="1_l3khq"]
+[ext_resource type="Texture2D" uid="uid://o12nuuc1y1nl" path="res://Assets/UI/touch/ps buttons/gdb-playstation-3_26.png" id="2_a502q"]
 [ext_resource type="Texture2D" uid="uid://cofiq00q22tr1" path="res://Assets/UI/touch/arrows_12.png" id="2_ppud4"]
-[ext_resource type="Texture2D" uid="uid://udee2hubnsge" path="res://Assets/UI/touch/arrows_06.png" id="3_1uc73"]
-[ext_resource type="Texture2D" uid="uid://b7lm6kwblyogs" path="res://Assets/UI/touch/arrows_10.png" id="4_uxkn2"]
-[ext_resource type="Texture2D" uid="uid://b68lsoq5er1pp" path="res://Assets/UI/touch/arrows_05.png" id="5_28c8q"]
-[ext_resource type="Texture2D" uid="uid://c8qpqkbbgtmkb" path="res://Assets/UI/touch/arrows_09.png" id="6_fc6kd"]
-[ext_resource type="Texture2D" uid="uid://b81llnycpepmt" path="res://Assets/UI/touch/arrows_07.png" id="7_e7yqq"]
-[ext_resource type="Texture2D" uid="uid://bp3wm2w7jw343" path="res://Assets/UI/touch/arrows_11.png" id="8_5y3ld"]
+[ext_resource type="Texture2D" uid="uid://bn3nacwmfiuph" path="res://Assets/UI/touch/ps buttons/gdb-playstation-3_17.png" id="3_hi7e5"]
+[ext_resource type="Texture2D" uid="uid://bb2epqjwnv4kn" path="res://Assets/UI/touch/ps buttons/gdb-playstation-3_18.png" id="4_jxlm4"]
+[ext_resource type="Texture2D" uid="uid://v0yd4kj1hdm0" path="res://Assets/UI/touch/ps buttons/gdb-playstation-3_33.png" id="5_cr63m"]
+[ext_resource type="Texture2D" uid="uid://bliusk4xodu8e" path="res://Assets/UI/touch/ps buttons/gdb-playstation-3_34.png" id="6_va646"]
+[ext_resource type="Texture2D" uid="uid://c1y6kqs0thqv5" path="res://Assets/UI/touch/ps buttons/gdb-playstation-3_08.png" id="7_p1ybt"]
+[ext_resource type="Texture2D" uid="uid://dreebsgwtc0bv" path="res://Assets/UI/touch/ps buttons/gdb-playstation-3_09.png" id="8_w0d20"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgq8b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ws80b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i2wyg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_67nsw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ihud"]
 radius = 75.02
@@ -28,40 +38,36 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="up" type="TouchScreenButton" parent="right"]
-position = Vector2(-48.0001, 89.16)
-rotation = -1.5708
-scale = Vector2(0.72, 0.72)
-texture_normal = ExtResource("1_3gx0v")
-texture_pressed = ExtResource("2_ppud4")
-shape = SubResource("CircleShape2D_0ihud")
+position = Vector2(53, 141)
+scale = Vector2(6, 6)
+texture_normal = ExtResource("1_l3khq")
+texture_pressed = ExtResource("2_a502q")
+shape = SubResource("CircleShape2D_bgq8b")
 passby_press = true
 action = "jump_up"
 
 [node name="attack_1" type="TouchScreenButton" parent="right"]
-position = Vector2(-47, 224)
-rotation = -1.5708
-scale = Vector2(0.72, 0.72)
-texture_normal = ExtResource("3_1uc73")
-texture_pressed = ExtResource("4_uxkn2")
-shape = SubResource("CircleShape2D_0ihud")
+position = Vector2(149, 64)
+scale = Vector2(6, 6)
+texture_normal = ExtResource("3_hi7e5")
+texture_pressed = ExtResource("4_jxlm4")
+shape = SubResource("CircleShape2D_ws80b")
 action = "player_attack_1"
 
 [node name="attack_2" type="TouchScreenButton" parent="right"]
-position = Vector2(96, 218.16)
-rotation = -1.5708
-scale = Vector2(0.72, 0.72)
-texture_normal = ExtResource("5_28c8q")
-texture_pressed = ExtResource("6_fc6kd")
-shape = SubResource("CircleShape2D_0ihud")
+position = Vector2(-38, 64)
+scale = Vector2(6, 6)
+texture_normal = ExtResource("5_cr63m")
+texture_pressed = ExtResource("6_va646")
+shape = SubResource("CircleShape2D_i2wyg")
 action = "player_attack_2"
 
 [node name="interact" type="TouchScreenButton" parent="right"]
-position = Vector2(103, 93)
-rotation = -1.5708
-scale = Vector2(0.72, 0.72)
-texture_normal = ExtResource("7_e7yqq")
-texture_pressed = ExtResource("8_5y3ld")
-shape = SubResource("CircleShape2D_0ihud")
+position = Vector2(53, -32)
+scale = Vector2(6, 6)
+texture_normal = ExtResource("7_p1ybt")
+texture_pressed = ExtResource("8_w0d20")
+shape = SubResource("CircleShape2D_67nsw")
 action = "interact"
 
 [node name="left" type="HBoxContainer" parent="."]

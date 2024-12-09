@@ -79,7 +79,7 @@ func on_attack(body:Node)->void:
 			if child.name =="Damagable":
 				Hitstopmanager.stop_small()
 				child.on_attacked(sword_damage)
-	
+				
 
 	
 	

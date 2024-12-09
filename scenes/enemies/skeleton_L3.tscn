@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/enemy/enemy_attributes.gd" id="1_5mjeq"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="1_pl2ay"]
-[ext_resource type="Texture2D" uid="uid://dmqf0jdgxsckr" path="res://Assets/enemies/skely_L1/Skeleton enemy.png" id="2_ve78s"]
+[ext_resource type="Texture2D" uid="uid://dmqf0jdgxsckr" path="res://Assets/enemies/skely_L3/Skeleton enemy.png" id="2_ve78s"]
 [ext_resource type="Script" path="res://scripts/enemy/skely_L3/idle.gd" id="3_gv0nb"]
 [ext_resource type="Script" path="res://scripts/enemy/skely_L3/chase.gd" id="5_w0h5g"]
 [ext_resource type="Script" path="res://scripts/enemy/skely_L3/attack.gd" id="6_eq4y8"]

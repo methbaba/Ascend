@@ -24,11 +24,14 @@ func on_attacked(dmg):
 	if health<=0:
 		if is_animated:
 			print("dead")
-			animated.stop(true)
 			animated.play(death_anim)
-			animated.animation_finished	
-			await get_tree().create_timer(1).timeout
+			
+			await get_tree().create_timer(animated.current_animation_length).timeout
+			
 			get_parent().queue_free()
 		else:
-			get_parent().queue_free()
+			get_parent().queue_free()	
+	
 		
+
+	

@@ -5,7 +5,7 @@ class_name enemy_attributes
 @export var enemy:CharacterBody2D
 
 @export var enemy_contact_dmg=30
-@export var wall_detector:RayCast2D
+
 
 func _physics_process(delta: float) -> void:
 	

@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://do8vos6kh0rdg"]
+
+[ext_resource type="Texture2D" uid="uid://d4li0gclrsw20" path="res://Assets/UI/touch/arrows_08.png" id="1_3gx0v"]
+[ext_resource type="Texture2D" uid="uid://cofiq00q22tr1" path="res://Assets/UI/touch/arrows_12.png" id="2_ppud4"]
+[ext_resource type="Texture2D" uid="uid://udee2hubnsge" path="res://Assets/UI/touch/arrows_06.png" id="3_1uc73"]
+[ext_resource type="Texture2D" uid="uid://b7lm6kwblyogs" path="res://Assets/UI/touch/arrows_10.png" id="4_uxkn2"]
+[ext_resource type="Texture2D" uid="uid://b68lsoq5er1pp" path="res://Assets/UI/touch/arrows_05.png" id="5_28c8q"]
+[ext_resource type="Texture2D" uid="uid://c8qpqkbbgtmkb" path="res://Assets/UI/touch/arrows_09.png" id="6_fc6kd"]
+[ext_resource type="Texture2D" uid="uid://b81llnycpepmt" path="res://Assets/UI/touch/arrows_07.png" id="7_e7yqq"]
+[ext_resource type="Texture2D" uid="uid://bp3wm2w7jw343" path="res://Assets/UI/touch/arrows_11.png" id="8_5y3ld"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ihud"]
+radius = 75.02
+
+[node name="Control" type="CanvasLayer"]
+
+[node name="right" type="HBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -244.0
+offset_top = -248.0
+offset_right = -244.0
+offset_bottom = -248.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="up" type="TouchScreenButton" parent="right"]
+position = Vector2(-48.0001, 89.16)
+rotation = -1.5708
+scale = Vector2(0.72, 0.72)
+texture_normal = ExtResource("1_3gx0v")
+texture_pressed = ExtResource("2_ppud4")
+shape = SubResource("CircleShape2D_0ihud")
+passby_press = true
+action = "jump_up"
+
+[node name="attack_1" type="TouchScreenButton" parent="right"]
+position = Vector2(-47, 224)
+rotation = -1.5708
+scale = Vector2(0.72, 0.72)
+texture_normal = ExtResource("3_1uc73")
+texture_pressed = ExtResource("4_uxkn2")
+shape = SubResource("CircleShape2D_0ihud")
+action = "player_attack_1"
+
+[node name="attack_2" type="TouchScreenButton" parent="right"]
+position = Vector2(96, 218.16)
+rotation = -1.5708
+scale = Vector2(0.72, 0.72)
+texture_normal = ExtResource("5_28c8q")
+texture_pressed = ExtResource("6_fc6kd")
+shape = SubResource("CircleShape2D_0ihud")
+action = "player_attack_2"
+
+[node name="interact" type="TouchScreenButton" parent="right"]
+position = Vector2(103, 93)
+rotation = -1.5708
+scale = Vector2(0.72, 0.72)
+texture_normal = ExtResource("7_e7yqq")
+texture_pressed = ExtResource("8_5y3ld")
+shape = SubResource("CircleShape2D_0ihud")
+action = "interact"
+
+[node name="left" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -135.0
+offset_right = 294.0
+offset_bottom = -6.0
+grow_vertical = 0
+
+[node name="right" type="TouchScreenButton" parent="left"]
+position = Vector2(281, -43)
+texture_normal = ExtResource("1_3gx0v")
+texture_pressed = ExtResource("2_ppud4")
+shape = SubResource("CircleShape2D_0ihud")
+passby_press = true
+action = "move_right"
+
+[node name="left" type="TouchScreenButton" parent="left"]
+position = Vector2(208, 111)
+rotation = 3.14159
+texture_normal = ExtResource("1_3gx0v")
+texture_pressed = ExtResource("2_ppud4")
+shape = SubResource("CircleShape2D_0ihud")
+passby_press = true
+action = "move_left"

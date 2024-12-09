@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://7v17tq53t5m4"]
+[gd_scene load_steps=37 format=4 uid="uid://7v17tq53t5m4"]
 
 [ext_resource type="PackedScene" uid="uid://ck4nqlhwc3pt" path="res://scenes/player/player.tscn" id="1_rfh5j"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_antlu"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://c07em8ne5s0ms" path="res://scenes/traps/sandworm/worm_trap_1.tscn" id="30_r65o0"]
 [ext_resource type="PackedScene" uid="uid://ctxamqcx17rhp" path="res://scenes/traps/sandworm/worm_trap_2.tscn" id="31_080jm"]
 [ext_resource type="PackedScene" uid="uid://dynmbr8o22f0s" path="res://scenes/traps/fire/fire_trap.tscn" id="32_2st6v"]
+[ext_resource type="PackedScene" uid="uid://d3df02k0a2fgo" path="res://scenes/platform/dirt_platform.tscn" id="33_e2a17"]
 [ext_resource type="PackedScene" uid="uid://nxq0b5xcrays" path="res://scenes/traps/arrows/arrow_trap_1.tscn" id="33_scdgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jqey6"]
@@ -369,6 +370,10 @@ position = Vector2(1747, 685)
 
 [node name="skeleton_L1" parent="." instance=ExtResource("30_emhce")]
 position = Vector2(1170, -128)
+
+[node name="platforms" parent="." instance=ExtResource("33_e2a17")]
+position = Vector2(116, 245)
+horizontal = true
 
 [connection signal="body_entered" from="camera_manager/zone_1" to="camera_manager" method="_on_zone_1_body_entered"]
 [connection signal="body_exited" from="camera_manager/zone_1" to="camera_manager" method="_on_zone_1_body_exited"]

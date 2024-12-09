@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=3 uid="uid://d3df02k0a2fgo"]
+
+[ext_resource type="Script" path="res://scripts/platforms/platforms.gd" id="1_8gq6w"]
+[ext_resource type="Texture2D" uid="uid://cydmoba0rh7af" path="res://Assets/platforms/tileset_dirt_03.png" id="2_uruay"]
+
+[sub_resource type="Animation" id="Animation_4x6jh"]
+resource_name = "shake"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4, 0), Vector2(0, 0), Vector2(-4, 0), Vector2(0, 0), Vector2(4, 0), Vector2(0, 0), Vector2(4, 0), Vector2(0, 0), Vector2(-4, 0), Vector2(0, 0), Vector2(4, 0), Vector2(0, 0), Vector2(4, 0), Vector2(0, 0), Vector2(-4, 0), Vector2(0, 0), Vector2(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sspda"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_72e06"]
+_data = {
+"RESET": SubResource("Animation_sspda"),
+"shake": SubResource("Animation_4x6jh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cerif"]
+size = Vector2(49, 15)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4tsjl"]
+b = Vector2(-10, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_70d06"]
+b = Vector2(8, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3ygda"]
+b = Vector2(0, -27)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i1qun"]
+b = Vector2(0, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5vtq"]
+size = Vector2(48, 4)
+
+[node name="platforms" type="CharacterBody2D" node_paths=PackedStringArray("particle_effect", "left_trigger", "right_trigger", "up_trigger", "down_trigger", "animator", "fallable_trigger")]
+script = ExtResource("1_8gq6w")
+particle_effect = NodePath("CPUParticles2D")
+left_trigger = NodePath("left")
+right_trigger = NodePath("right")
+up_trigger = NodePath("up")
+down_trigger = NodePath("down")
+animator = NodePath("AnimationPlayer")
+fallable_trigger = NodePath("fallable_trigger")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_72e06")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uruay")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_cerif")
+
+[node name="left" type="Area2D" parent="."]
+position = Vector2(9, 3)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+position = Vector2(-33, -2)
+shape = SubResource("SegmentShape2D_4tsjl")
+
+[node name="right" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
+position = Vector2(24, 0)
+shape = SubResource("SegmentShape2D_70d06")
+
+[node name="up" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up"]
+position = Vector2(0, -7)
+shape = SubResource("SegmentShape2D_3ygda")
+
+[node name="down" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="down"]
+position = Vector2(0, 9)
+shape = SubResource("SegmentShape2D_i1qun")
+
+[node name="fallable_trigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fallable_trigger"]
+position = Vector2(-1, -8)
+shape = SubResource("RectangleShape2D_x5vtq")
+debug_color = Color(0.354394, 0.605041, 0.374477, 0.42)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 3)
+emitting = false
+amount = 30
+lifetime = 0.4
+emission_shape = 3
+emission_rect_extents = Vector2(23.48, 7.92)
+color = Color(0.741176, 0.607843, 0.517647, 1)

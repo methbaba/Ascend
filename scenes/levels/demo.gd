@@ -8,7 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_physical_key_pressed(KEY_F):
-		print("dash FF ")
+	#if Input.is_physical_key_pressed(KEY_F):
+		#print("dash FF ")
 		
-	if Input.is_action_pressed("dash")
+	if Input.is_action_pressed("dash"):
+		pass

@@ -60,7 +60,7 @@ scale = Vector2(6, 6)
 texture_normal = ExtResource("5_cr63m")
 texture_pressed = ExtResource("6_va646")
 shape = SubResource("CircleShape2D_i2wyg")
-action = "player_attack_2"
+action = "dash"
 
 [node name="interact" type="TouchScreenButton" parent="right"]
 position = Vector2(53, -32)

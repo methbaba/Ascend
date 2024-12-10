@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://b28um2h6nrny5"]
+[gd_scene load_steps=27 format=4 uid="uid://b28um2h6nrny5"]
 
 [ext_resource type="TileSet" uid="uid://d1wf1dh4ja5ae" path="res://Assets/tilesets/level_1.tres" id="1_p8pjv"]
 [ext_resource type="PackedScene" uid="uid://do8vos6kh0rdg" path="res://scenes/UI/touch_controls.tscn" id="1_wcedt"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://nxq0b5xcrays" path="res://scenes/traps/arrows/arrow_trap_1.tscn" id="14_gasvc"]
 [ext_resource type="PackedScene" uid="uid://cx77aso140ygq" path="res://scenes/enemies/skely.tscn" id="18_l6q0c"]
 [ext_resource type="PackedScene" uid="uid://c1p8i2w7q0s00" path="res://scenes/traps/spike_bed.tscn" id="21_7ul8o"]
+[ext_resource type="Script" path="res://scenes/levels/demo.gd" id="23_d1jy6"]
 
 [sub_resource type="Resource" id="Resource_lrsdm"]
 script = ExtResource("5_tabph")
@@ -315,3 +316,6 @@ position = Vector2(953, 619)
 [node name="spear_bed" parent="." instance=ExtResource("8_6rwrr")]
 z_index = 5
 position = Vector2(2708, 497)
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("23_d1jy6")

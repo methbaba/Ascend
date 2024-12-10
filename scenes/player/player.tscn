@@ -259,6 +259,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_ba1l8"]
 resource_name = "jump"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -496,7 +497,7 @@ states/jump/position = Vector2(187, -136)
 states/run/node = SubResource("AnimationNodeAnimation_2leou")
 states/run/position = Vector2(195, 440)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_7jqft"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_our5c"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_bq31v"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ufxko"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_ihsis"), "run", "jump", SubResource("AnimationNodeStateMachineTransition_ewyqh"), "idle", "attack_1_normal", SubResource("AnimationNodeStateMachineTransition_b0i8t"), "attack_1_normal", "idle", SubResource("AnimationNodeStateMachineTransition_k2vm3"), "jump", "attack_1_normal", SubResource("AnimationNodeStateMachineTransition_luk8g"), "attack_1_normal", "jump", SubResource("AnimationNodeStateMachineTransition_tj18w"), "run", "attack_1_normal", SubResource("AnimationNodeStateMachineTransition_ti6uq"), "attack_1_normal", "run", SubResource("AnimationNodeStateMachineTransition_brd8d"), "idle", "death", SubResource("AnimationNodeStateMachineTransition_bw0os"), "run", "death", SubResource("AnimationNodeStateMachineTransition_pd8vr"), "attack_1_normal", "death", SubResource("AnimationNodeStateMachineTransition_y00gw"), "jump", "death", SubResource("AnimationNodeStateMachineTransition_otd0t"), "jump", "hurt", SubResource("AnimationNodeStateMachineTransition_7bgoy"), "attack_1_normal", "hurt", SubResource("AnimationNodeStateMachineTransition_jx1uf"), "run", "hurt", SubResource("AnimationNodeStateMachineTransition_nl83i"), "idle", "hurt", SubResource("AnimationNodeStateMachineTransition_22dab"), "hurt", "jump", SubResource("AnimationNodeStateMachineTransition_1qulg"), "hurt", "attack_1_normal", SubResource("AnimationNodeStateMachineTransition_sfufq"), "hurt", "run", SubResource("AnimationNodeStateMachineTransition_p2526"), "hurt", "idle", SubResource("AnimationNodeStateMachineTransition_01pqu")]
-graph_offset = Vector2(21, -175)
+graph_offset = Vector2(102, -75)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tf0r8"]
 polygon = PackedVector2Array(2, -74, 18, -72, 20, -66, 20, -56, 18, -48, 26, -46, 20, -16, 24, -8, -8, -8, -2, -28, -4, -34)

@@ -3,11 +3,14 @@ extends CharacterBody2D
 @export var sword_damage=100
 @export var  SPEED:float  = 300.0
 @export var JUMP_VELOCITY:float = -400.0
-@export var gravity_multiplier:int= 2 
+@export var gravity_multiplier:float= 2 
 @export var marker:Marker2D
 @export var max_jumps:int=2 
 @export var sword_attack_area:Area2D
 @export var attack_timer:Timer
+
+@export var effect_animator:AnimationPlayer
+
 var jump:bool =false
 var walk:bool = false
 var jump_counter:int
@@ -15,6 +18,7 @@ var hurt:bool = false
 var attack:bool = false
 var dead:bool=false
 func _ready() -> void:
+	
 	#hurt animation 
 	SignalManager.health_changed.connect(on_hurt)
 	SignalManager.on_death.connect(on_dead)
@@ -34,6 +38,7 @@ func _physics_process(delta: float) -> void:
 		# Add the gravity.
 		if not is_on_floor():
 			jump=true
+			
 			velocity += get_gravity() * delta* gravity_multiplier
 		if is_on_floor():
 			jump_counter=0
@@ -42,7 +47,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump_up") and jump_counter<=max_jumps:
 			velocity.y = JUMP_VELOCITY
 			jump_counter +=1 
-
+		if Input.is_action_just_released("jump_up"):
+			pass
+			#velocity += get_gravity() * delta* gravity_multiplier
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		var direction := Input.get_axis("move_left","move_right")
@@ -67,7 +74,12 @@ func _physics_process(delta: float) -> void:
 			
 			attack_timer.start(0.3)
 			
-			
+		## dash 
+		if Input.is_action_just_pressed("dash_inp") :
+			print("dash")
+			#effect_animator.play("dash") 
+		
+		
 		
 	move_and_slide()
 

@@ -1,0 +1,201 @@
+[gd_scene load_steps=18 format=3 uid="uid://dj41w65d0ddk4"]
+
+[ext_resource type="TileSet" uid="uid://w5ayf2a7tl7s" path="res://scenes/levels/dark_level.tres" id="1_bh7x4"]
+[ext_resource type="TileSet" uid="uid://d1wf1dh4ja5ae" path="res://Assets/tilesets/level_1.tres" id="2_jyiy2"]
+[ext_resource type="PackedScene" uid="uid://ck4nqlhwc3pt" path="res://scenes/player/player.tscn" id="3_c5ydn"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_5gvoq"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="5_ifjqf"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_xuy4t"]
+[ext_resource type="PackedScene" uid="uid://do8vos6kh0rdg" path="res://scenes/UI/touch_controls.tscn" id="7_utekw"]
+[ext_resource type="PackedScene" uid="uid://dg5p180el0qsu" path="res://scenes/camera/camera_manager.tscn" id="8_jjf7u"]
+[ext_resource type="PackedScene" uid="uid://ctt2dpa2frivj" path="res://scenes/consumables/coins&gems/copper_coin.tscn" id="9_27crw"]
+[ext_resource type="PackedScene" uid="uid://bm24mlxssym1a" path="res://scenes/consumables/coins&gems/silver_coin.tscn" id="10_c2fs5"]
+[ext_resource type="PackedScene" uid="uid://d1xlwj0ycmlyj" path="res://scenes/interactibles/bounce_pad.tscn" id="11_0eoej"]
+[ext_resource type="PackedScene" uid="uid://bp83323cd0rk4" path="res://scenes/interactibles/elevetor.tscn" id="12_v63di"]
+[ext_resource type="PackedScene" uid="uid://iot5iotjvq55" path="res://scenes/traps/celling/celling_level_2.tscn" id="13_0nm2p"]
+[ext_resource type="PackedScene" uid="uid://nxq0b5xcrays" path="res://scenes/traps/arrows/arrow_trap_1.tscn" id="14_e3umc"]
+
+[sub_resource type="Resource" id="Resource_hs3qq"]
+script = ExtResource("6_xuy4t")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_858vr"]
+size = Vector2(850, 474)
+
+[sub_resource type="Resource" id="Resource_3pprd"]
+script = ExtResource("6_xuy4t")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="project_template" type="Node2D"]
+
+[node name="tilemap_holder" type="Node" parent="."]
+
+[node name="dark_base" type="TileMapLayer" parent="tilemap_holder"]
+tile_set = ExtResource("1_bh7x4")
+
+[node name="background" type="TileMapLayer" parent="tilemap_holder"]
+z_index = -2
+position = Vector2(2250, -8)
+tile_set = ExtResource("2_jyiy2")
+
+[node name="filer" type="TileMapLayer" parent="tilemap_holder"]
+z_index = -4
+position = Vector2(2740, -13)
+tile_set = ExtResource("2_jyiy2")
+rendering_quadrant_size = 64
+
+[node name="decor" type="TileMapLayer" parent="tilemap_holder"]
+z_index = -1
+tile_set = ExtResource("2_jyiy2")
+
+[node name="player" parent="." instance=ExtResource("3_c5ydn")]
+visible = false
+position = Vector2(165, 626)
+scale = Vector2(0.5, 0.5)
+JUMP_VELOCITY = -450.0
+gravity_multiplier = 1.1
+max_jumps = 1
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+physics_interpolation_mode = 1
+position = Vector2(311.96, -175.33)
+scale = Vector2(2, 2)
+zoom = Vector2(2, 2)
+
+[node name="PhantomCameraHost" type="Node" parent="player/Camera2D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_5gvoq")
+
+[node name="PhantomCamera2D" type="Node2D" parent="player/Camera2D/PhantomCameraHost" node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(320.98, 538.335)
+script = ExtResource("5_ifjqf")
+priority = 1
+follow_mode = 2
+follow_target = NodePath("../../..")
+zoom = Vector2(2, 2)
+tween_resource = SubResource("Resource_hs3qq")
+follow_offset = Vector2(155.98, -87.665)
+follow_damping = true
+follow_damping_value = Vector2(0.3, 0.2)
+draw_limits = true
+
+[node name="touch_controls" parent="player" instance=ExtResource("7_utekw")]
+visible = false
+
+[node name="camera_manager" parent="." node_paths=PackedStringArray("zone_1_area", "zone_1_cam", "zone_2_area", "zone_2_cam", "zone_3_area", "zone_3_cam") instance=ExtResource("8_jjf7u")]
+zone_1_area = NodePath("zone_1")
+zone_1_cam = NodePath("zone_1/zone_1")
+zone_2_area = NodePath("zone_2")
+zone_2_cam = NodePath("zone_2/zone_2")
+zone_3_area = NodePath("zone_3")
+zone_3_cam = NodePath("zone_3/zone_3")
+
+[node name="zone_1" type="Area2D" parent="camera_manager"]
+visible = false
+position = Vector2(2588, 659)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_manager/zone_1"]
+position = Vector2(72, -252)
+shape = SubResource("RectangleShape2D_858vr")
+
+[node name="zone_1" type="Node2D" parent="camera_manager/zone_1"]
+z_index = 10
+position = Vector2(76, -230)
+script = ExtResource("5_ifjqf")
+zoom = Vector2(1.3, 1.3)
+tween_resource = SubResource("Resource_3pprd")
+draw_limits = true
+
+[node name="zone_2" type="Area2D" parent="camera_manager"]
+visible = false
+position = Vector2(1692, 383)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_manager/zone_2"]
+position = Vector2(72, -199)
+shape = SubResource("RectangleShape2D_858vr")
+
+[node name="zone_2" type="Node2D" parent="camera_manager/zone_2"]
+position = Vector2(73, -193)
+script = ExtResource("5_ifjqf")
+zoom = Vector2(1.5, 1.5)
+tween_resource = SubResource("Resource_3pprd")
+draw_limits = true
+
+[node name="zone_3" type="Area2D" parent="camera_manager"]
+visible = false
+position = Vector2(3819, 435)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="camera_manager/zone_3"]
+position = Vector2(76, -229)
+shape = SubResource("RectangleShape2D_858vr")
+
+[node name="zone_3" type="Node2D" parent="camera_manager/zone_3"]
+position = Vector2(118, -178)
+script = ExtResource("5_ifjqf")
+zoom = Vector2(1.3, 1.3)
+tween_resource = SubResource("Resource_3pprd")
+draw_limits = true
+
+[node name="platforms" type="Node" parent="."]
+
+[node name="vertical" type="Node" parent="platforms"]
+
+[node name="horizontal" type="Node" parent="platforms"]
+
+[node name="consumables" type="Node" parent="."]
+
+[node name="coins" type="Node" parent="consumables"]
+
+[node name="set_1" type="Node" parent="consumables/coins"]
+
+[node name="copper_set" type="Node" parent="consumables/coins"]
+
+[node name="copper_coin" parent="consumables/coins/copper_set" instance=ExtResource("9_27crw")]
+visible = false
+position = Vector2(461, -34)
+
+[node name="silver_set" type="Node" parent="consumables/coins"]
+
+[node name="silver_coin" parent="consumables/coins/silver_set" instance=ExtResource("10_c2fs5")]
+visible = false
+position = Vector2(653, -54)
+
+[node name="chests2" type="Node" parent="."]
+
+[node name="enemies" type="Node" parent="."]
+
+[node name="bats" type="Node" parent="enemies"]
+
+[node name="bounce" type="Node" parent="."]
+
+[node name="bounce_pad" parent="bounce" instance=ExtResource("11_0eoej")]
+visible = false
+position = Vector2(249, 608)
+
+[node name="elevetor" parent="bounce" instance=ExtResource("12_v63di")]
+visible = false
+position = Vector2(4225, 441)
+
+[node name="traps" type="Node" parent="."]
+
+[node name="celling_level_2" parent="traps" instance=ExtResource("13_0nm2p")]
+visible = false
+position = Vector2(3130, 594)
+
+[node name="arrow" type="Node" parent="traps"]
+
+[node name="arrow_1" parent="traps/arrow" instance=ExtResource("14_e3umc")]
+visible = false
+position = Vector2(1682, 602)
+scale = Vector2(1.5, 1.5)
+
+[node name="worms" type="Node" parent="traps"]
